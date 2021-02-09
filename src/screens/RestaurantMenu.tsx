@@ -122,11 +122,11 @@ export default function RestaurantMenu() {
             if (key % 2 == 0)
               return (
                 <Row key={key}>
-                  <Box width={window.width / 2}>
+                  <Box width={window.width / 2} p={2}>
                     <ItemCard item={data[key]} />
                   </Box>
                   {data[key + 1] ? (
-                    <Box width={window.width / 2}>
+                    <Box width={window.width / 2} p={2}>
                       <ItemCard item={data[key + 1]} />
                     </Box>
                   ) : (

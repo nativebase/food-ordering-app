@@ -8,7 +8,7 @@ export default function ItemCard(item: any) {
   return (
     <>
       <Button my={1} variant='ghost' alignItems='center' px={1}>
-        <VStack space={2} px={1}>
+        <VStack space={2} px={1} width={'100%'}>
           <Row bg='red.100'>
             <Image
               alt='image'
@@ -22,7 +22,7 @@ export default function ItemCard(item: any) {
           <Text fontSize={10} color='gray.600' fontWeight={300}>
             EXTRA VALUE MEAL - MEDIUM
           </Text>
-          <Row width='95%' alignItems={'center'}>
+          <Row width='100%' alignItems={'center'}>
             <Image
               alt='image'
               size='13px'
@@ -37,6 +37,7 @@ export default function ItemCard(item: any) {
               fontWeight={400}
               fontSize={15}
               fontFamily='ProximaNova'
+              isTruncated={true}
             >
               {item?.item?.name}
             </Text>
