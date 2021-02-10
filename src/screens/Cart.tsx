@@ -19,6 +19,7 @@ import {
 import { ItemsContext } from '../utils/ItemsContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Path } from 'react-native-svg';
+import window from '../utils/Layout';
 
 export default function Cart() {
   const items: any = React.useContext(ItemsContext);
@@ -28,8 +29,8 @@ export default function Cart() {
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
       <ScrollView>
-        <Box bg='white' px={4} py={6}>
-          <Row mb={12}>
+        <Box bg='white' px={4} py={6} width={window.width}>
+          <Row mb={5}>
             <Image
               alt='image'
               size={70}
@@ -50,7 +51,12 @@ export default function Cart() {
               total += item.cost * item.count;
               if (item.count != 0) {
                 return (
-                  <Row alignItems={'center'} key={key}>
+                  <Box
+                    alignItems={'center'}
+                    key={key}
+                    flexDirection={'row'}
+                    width={'auto'}
+                  >
                     <Image
                       mr={2}
                       alt='image'
@@ -70,7 +76,7 @@ export default function Cart() {
                         borderWidth={2}
                         borderColor='gray.300'
                         alignItems='center'
-                        mx={3}
+                        mx={1}
                       >
                         <Button
                           size='xs'
@@ -129,7 +135,7 @@ export default function Cart() {
                     <Text fontWeight={400} fontSize={16} mt={1}>
                       ₹{parseInt(item.cost * item.count)}
                     </Text>
-                  </Row>
+                  </Box>
                 );
               }
             })}
@@ -146,7 +152,7 @@ export default function Cart() {
               <Path d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z' />
               <Path d='M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z' />
             </Icon>
-            <Text color='headingText.500'>
+            <Text pl={2} color='headingText.500'>
               Any items request? We will try our best to convey it.
             </Text>
           </Row>

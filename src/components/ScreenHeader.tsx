@@ -4,9 +4,9 @@ import { Path } from 'react-native-svg';
 
 export default function ScreenHeader() {
   return (
-    <React.Fragment>
+    <>
       <Box w='100%' py={3} bg='white'>
-        <Divider borderWidth={0.25} borderColor='gray.400' />
+        {/* <Divider borderWidth={0.25} borderColor='gray.400' /> */}
 
         <Flex direction='row' mx={3}>
           <Column ml={2} width='76%'>
@@ -80,6 +80,6 @@ export default function ScreenHeader() {
         </Row>
       </Box>
       <Divider borderWidth={0.35} borderColor='gray.400' />
-    </React.Fragment>
+    </>
   );
 }
