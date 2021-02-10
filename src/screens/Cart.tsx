@@ -11,7 +11,6 @@ import {
   Icon,
   Image,
   Link,
-  Path,
   Row,
   Text,
   View,
@@ -19,6 +18,7 @@ import {
 } from 'native-base';
 import { ItemsContext } from '../utils/ItemsContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Path } from 'react-native-svg';
 
 export default function Cart() {
   const items: any = React.useContext(ItemsContext);
@@ -50,7 +50,7 @@ export default function Cart() {
               total += item.cost * item.count;
               if (item.count != 0) {
                 return (
-                  <Row alignItems={'center'}>
+                  <Row alignItems={'center'} key={key}>
                     <Image
                       mr={2}
                       alt='image'
@@ -67,7 +67,7 @@ export default function Cart() {
                     </Box>
                     <Box>
                       <HStack
-                        borderWidth='2px'
+                        borderWidth={2}
                         borderColor='gray.300'
                         alignItems='center'
                         mx={3}
@@ -138,7 +138,7 @@ export default function Cart() {
             mt={4}
             mb={3}
             borderColor='headingText.300'
-            borderWidth='0.5'
+            borderWidth={0.5}
           />
           <Row alignItems='center'>
             <Icon viewBox='0 0 16 16' color='headingText.500' size={5}>
@@ -146,25 +146,28 @@ export default function Cart() {
               <Path d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z' />
               <Path d='M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z' />
             </Icon>
-            <Text pl={4} color='headingText.500'>
+            <Text color='headingText.500'>
               Any items request? We will try our best to convey it.
             </Text>
           </Row>
         </Box>
-        <Box mt={5} bg='white' px={4} py={6}>
-          <Row
+        <Box mt={5} bg='white' px={4} py={6} width={'100%'} flexWrap={'wrap'}>
+          <Box
             bg='orange.50'
             p={4}
-            borderRadius='8'
-            borderWidth='1.5px'
+            borderRadius={8}
+            borderWidth={1.5}
             borderColor='orange.300'
+            flexDirection={'row'}
           >
             <Checkbox
-              variant='orange'
               colorScheme='orange'
               borderColor='orange.700'
               mr={3}
-            ></Checkbox>
+              value={''}
+            >
+              {''}
+            </Checkbox>
             <Box width='90%' color='orange.700'>
               <Text fontSize={16} fontWeight='700'>
                 Opt in for No-Contact Delivery
@@ -175,33 +178,35 @@ export default function Cart() {
                 for COD)
               </Text>
             </Box>
-          </Row>
-          <Row flexWrap='wrap' mt={5}>
+          </Box>
+          <Box mt={5}>
             <Image
               alt='delivery'
               size='38px'
               source={require('../../assets/images/delivery.png')}
             ></Image>
-            <Row flexWrap='wrap' width='90%' pl={3}>
-              <Text letterSpacing='1' fontWeight='600' fontSize='14'>
-                Play Santa. Tip the partner!
-              </Text>
-              <Link
-                isUnderlined={false}
-                color='blue.500'
-                fontWeight='500'
-                pl={2}
-              >
-                How it works
-              </Link>
-              <Text color='headingText.600' mt={2} fontSize='13'>
+            <Box pl={3}>
+              <Row>
+                <Text letterSpacing={1} fontWeight='600' fontSize={14}>
+                  Play Santa. Tip the partner!
+                </Text>
+                <Link
+                  isUnderlined={false}
+                  color='blue.500'
+                  fontWeight='500'
+                  pl={2}
+                >
+                  How it works
+                </Link>
+              </Row>
+              <Text color='headingText.600' mt={2} fontSize={13}>
                 Christmas comes once a year. Tips needn't. Ring in the holiday
                 spirit by playing Secret Santa to your delivery partner.
               </Text>
               <HStack space={4} mt={6}>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -211,7 +216,7 @@ export default function Cart() {
                 <Box>
                   <Button
                     variant='ghost'
-                    borderWidth='1'
+                    borderWidth={1}
                     borderColor='headingText.300'
                     fontWeight={500}
                     shadow={1}
@@ -224,7 +229,7 @@ export default function Cart() {
                 </Box>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -233,7 +238,7 @@ export default function Cart() {
                 </Button>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -241,8 +246,8 @@ export default function Cart() {
                   Other
                 </Button>
               </HStack>
-            </Row>
-          </Row>
+            </Box>
+          </Box>
         </Box>
         <Box mt={5} mb={40} bg='white' px={4} py={6}>
           <VStack space={3}>
@@ -254,12 +259,12 @@ export default function Cart() {
               <Text ml='auto'>₹{total}</Text>
             </Flex>
             <Flex direction='row'>
-              <VStack space='1'>
-                <Box width='130'>
+              <VStack space={1}>
+                <Box width={130}>
                   <Text color='blue.500'>Delivery Partner Fee</Text>
                   <Divider
                     borderStyle='dashed'
-                    borderWidth='1'
+                    borderWidth={1}
                     borderColor='blue.500'
                   />
                 </Box>
@@ -275,7 +280,7 @@ export default function Cart() {
                 <Text color='blue.500'>Taxes and charges</Text>
                 <Divider
                   borderStyle='dashed'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='blue.500'
                 />
               </Box>

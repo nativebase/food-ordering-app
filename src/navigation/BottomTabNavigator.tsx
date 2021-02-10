@@ -3,13 +3,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { BottomTabParamList, TabTwoParamList } from '../../types';
 
-import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import Cart from '../screens/Cart';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../theme/Colors';
-import RestaurantScreens from '../screens/RestaurantScreens';
-import { createIcon, Icon, Path } from 'native-base';
+import { createIcon, Icon } from 'native-base';
 import AppNavigator from './AppNavigator';
 import Account from '../components/Auth/Account';
 
