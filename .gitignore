@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 */.DS_Store
 .DS_Store
+.expo/web
+web-build
