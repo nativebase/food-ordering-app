@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-.expo/*
+.expo/web
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
