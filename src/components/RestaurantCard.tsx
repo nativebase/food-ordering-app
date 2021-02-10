@@ -28,7 +28,7 @@ export default function RestaurantCard() {
               fontFamily='ProximaNova'
               isTruncated={true}
             >
-              McDonald's
+              Foodie's
             </Text>
 
             <Text
