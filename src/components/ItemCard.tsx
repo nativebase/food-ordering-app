@@ -22,7 +22,7 @@ export default function ItemCard(item: any) {
           <Text fontSize={10} color='gray.600' fontWeight={300}>
             EXTRA VALUE MEAL - MEDIUM
           </Text>
-          <Row width='100%' alignItems={'center'}>
+          <Box width='100%' alignItems={'center'} flexDirection={'row'}>
             <Image
               alt='image'
               size='13px'
@@ -41,7 +41,7 @@ export default function ItemCard(item: any) {
             >
               {item?.item?.name}
             </Text>
-          </Row>
+          </Box>
           <Row pt={5} justifyContent='space-between'>
             <Text color='gray.700' fontWeight={300}>
               ₹{item?.item?.cost}

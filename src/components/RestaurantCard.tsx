@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  Divider,
-  HStack,
-  Icon,
-  Image,
-  Path,
-  Row,
-  Text,
-  VStack,
-} from 'native-base';
+import { Button, Divider, HStack, Image, Row, Text, VStack } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import window from '../utils/Layout';
 export default function RestaurantCard() {
