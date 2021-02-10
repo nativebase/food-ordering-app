@@ -2,19 +2,15 @@ import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
-} from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
-import { ColorSchemeName } from "react-native";
-import { RootStackParamList } from "../../types";
+} from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import * as React from 'react';
+import { ColorSchemeName } from 'react-native';
 
-import NotFoundScreen from "../screens/NotFoundScreen";
-import LinkingConfiguration from "./LinkingConfiguration";
-import Login from "../components/Auth/Login";
-import BottomTabNavigator from "./BottomTabNavigator";
-import SignUp from "../components/Auth/SignUp";
-import { ItemsContext } from "../utils/ItemsContext";
-import BottomBarCart from "../components/BottomBarCart";
+import LinkingConfiguration from './LinkingConfiguration';
+import BottomTabNavigator from './BottomTabNavigator';
+import { ItemsContext } from '../utils/ItemsContext';
+import BottomBarCart from '../components/BottomBarCart';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -26,7 +22,7 @@ export default function Navigation({
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
     </NavigationContainer>
@@ -41,9 +37,9 @@ function RootNavigator() {
   const items: any = React.useContext(ItemsContext);
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name='Root' component={BottomTabNavigator} />
 
-      <Stack.Screen name="Cart" component={BottomBarCart} />
+      <Stack.Screen name='Cart' component={BottomBarCart} />
     </Stack.Navigator>
   );
 }

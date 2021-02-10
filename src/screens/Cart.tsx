@@ -11,7 +11,6 @@ import {
   Icon,
   Image,
   Link,
-  Path,
   Row,
   Text,
   View,
@@ -19,6 +18,7 @@ import {
 } from 'native-base';
 import { ItemsContext } from '../utils/ItemsContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Path } from 'react-native-svg';
 
 export default function Cart() {
   const items: any = React.useContext(ItemsContext);
@@ -50,7 +50,7 @@ export default function Cart() {
               total += item.cost * item.count;
               if (item.count != 0) {
                 return (
-                  <Row alignItems={'center'}>
+                  <Row alignItems={'center'} key={key}>
                     <Image
                       mr={2}
                       alt='image'
@@ -67,7 +67,7 @@ export default function Cart() {
                     </Box>
                     <Box>
                       <HStack
-                        borderWidth='2px'
+                        borderWidth={2}
                         borderColor='gray.300'
                         alignItems='center'
                         mx={3}
@@ -138,7 +138,7 @@ export default function Cart() {
             mt={4}
             mb={3}
             borderColor='headingText.300'
-            borderWidth='0.5'
+            borderWidth={0.5}
           />
           <Row alignItems='center'>
             <Icon viewBox='0 0 16 16' color='headingText.500' size={5}>
@@ -155,17 +155,19 @@ export default function Cart() {
           <Box
             bg='orange.50'
             p={4}
-            borderRadius='8'
-            borderWidth='1.5px'
+            borderRadius={8}
+            borderWidth={1.5}
             borderColor='orange.300'
             flexDirection={'row'}
           >
             <Checkbox
-              variant='orange'
               colorScheme='orange'
               borderColor='orange.700'
               mr={3}
-            ></Checkbox>
+              value={''}
+            >
+              {''}
+            </Checkbox>
             <Box width='90%' color='orange.700'>
               <Text fontSize={16} fontWeight='700'>
                 Opt in for No-Contact Delivery
@@ -185,7 +187,7 @@ export default function Cart() {
             ></Image>
             <Box pl={3}>
               <Row>
-                <Text letterSpacing='1' fontWeight='600' fontSize='14'>
+                <Text letterSpacing={1} fontWeight='600' fontSize={14}>
                   Play Santa. Tip the partner!
                 </Text>
                 <Link
@@ -197,14 +199,14 @@ export default function Cart() {
                   How it works
                 </Link>
               </Row>
-              <Text color='headingText.600' mt={2} fontSize='13'>
+              <Text color='headingText.600' mt={2} fontSize={13}>
                 Christmas comes once a year. Tips needn't. Ring in the holiday
                 spirit by playing Secret Santa to your delivery partner.
               </Text>
               <HStack space={4} mt={6}>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -214,7 +216,7 @@ export default function Cart() {
                 <Box>
                   <Button
                     variant='ghost'
-                    borderWidth='1'
+                    borderWidth={1}
                     borderColor='headingText.300'
                     fontWeight={500}
                     shadow={1}
@@ -227,7 +229,7 @@ export default function Cart() {
                 </Box>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -236,7 +238,7 @@ export default function Cart() {
                 </Button>
                 <Button
                   variant='ghost'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='headingText.300'
                   fontWeight={500}
                   shadow={1}
@@ -257,12 +259,12 @@ export default function Cart() {
               <Text ml='auto'>₹{total}</Text>
             </Flex>
             <Flex direction='row'>
-              <VStack space='1'>
-                <Box width='130'>
+              <VStack space={1}>
+                <Box width={130}>
                   <Text color='blue.500'>Delivery Partner Fee</Text>
                   <Divider
                     borderStyle='dashed'
-                    borderWidth='1'
+                    borderWidth={1}
                     borderColor='blue.500'
                   />
                 </Box>
@@ -278,7 +280,7 @@ export default function Cart() {
                 <Text color='blue.500'>Taxes and charges</Text>
                 <Divider
                   borderStyle='dashed'
-                  borderWidth='1'
+                  borderWidth={1}
                   borderColor='blue.500'
                 />
               </Box>

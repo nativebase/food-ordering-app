@@ -5,8 +5,15 @@ import { ScrollView } from 'react-native-gesture-handler';
 import ItemCard from '../components/ItemCard';
 import window from '../utils/Layout';
 
+interface DataProps {
+  name: string;
+  cost: number;
+  src: string;
+  count: number;
+}
+
 export default function RestaurantMenu() {
-  let data = [
+  let data: DataProps[] = [
     {
       name: 'EVM McSpicy Paneer Double Patty Burger',
       cost: 169,
