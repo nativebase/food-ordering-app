@@ -146,18 +146,19 @@ export default function Cart() {
               <Path d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z' />
               <Path d='M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z' />
             </Icon>
-            <Text pl={4} color='headingText.500'>
+            <Text color='headingText.500'>
               Any items request? We will try our best to convey it.
             </Text>
           </Row>
         </Box>
-        <Box mt={5} bg='white' px={4} py={6}>
-          <Row
+        <Box mt={5} bg='white' px={4} py={6} width={'100%'} flexWrap={'wrap'}>
+          <Box
             bg='orange.50'
             p={4}
             borderRadius='8'
             borderWidth='1.5px'
             borderColor='orange.300'
+            flexDirection={'row'}
           >
             <Checkbox
               variant='orange'
@@ -175,25 +176,27 @@ export default function Cart() {
                 for COD)
               </Text>
             </Box>
-          </Row>
-          <Row flexWrap='wrap' mt={5}>
+          </Box>
+          <Box mt={5}>
             <Image
               alt='delivery'
               size='38px'
               source={require('../../assets/images/delivery.png')}
             ></Image>
-            <Row flexWrap='wrap' width='90%' pl={3}>
-              <Text letterSpacing='1' fontWeight='600' fontSize='14'>
-                Play Santa. Tip the partner!
-              </Text>
-              <Link
-                isUnderlined={false}
-                color='blue.500'
-                fontWeight='500'
-                pl={2}
-              >
-                How it works
-              </Link>
+            <Box pl={3}>
+              <Row>
+                <Text letterSpacing='1' fontWeight='600' fontSize='14'>
+                  Play Santa. Tip the partner!
+                </Text>
+                <Link
+                  isUnderlined={false}
+                  color='blue.500'
+                  fontWeight='500'
+                  pl={2}
+                >
+                  How it works
+                </Link>
+              </Row>
               <Text color='headingText.600' mt={2} fontSize='13'>
                 Christmas comes once a year. Tips needn't. Ring in the holiday
                 spirit by playing Secret Santa to your delivery partner.
@@ -241,8 +244,8 @@ export default function Cart() {
                   Other
                 </Button>
               </HStack>
-            </Row>
-          </Row>
+            </Box>
+          </Box>
         </Box>
         <Box mt={5} mb={40} bg='white' px={4} py={6}>
           <VStack space={3}>
