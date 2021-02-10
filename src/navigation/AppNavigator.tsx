@@ -20,8 +20,12 @@ const AppStack = createStackNavigator<AppParamList>();
 
 function AppNavigator() {
   return (
-    <AppStack.Navigator headerMode='screen'>
-      <AppStack.Screen name='RestaurantScreens' component={RestaurantScreens} />
+    <AppStack.Navigator>
+      <AppStack.Screen
+        name='RestaurantScreens'
+        component={RestaurantScreens}
+        options={{ headerShown: false }}
+      />
       <AppStack.Screen
         name='RestaurantMenu'
         component={RestaurantMenu}
