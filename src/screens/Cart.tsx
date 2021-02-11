@@ -30,7 +30,7 @@ export default function Cart() {
     >
       <ScrollView>
         <Box bg='white' px={4} py={6} width={window.width}>
-          <Row mb={5}>
+          <Row>
             <Image
               alt='image'
               size={70}
@@ -41,12 +41,12 @@ export default function Cart() {
             />
             <VStack pl={5} space={1} justifyContent='center'>
               <Text fontWeight={600} fontSize={18}>
-                McDonald's
+                Foodie's
               </Text>
               <Text color='headingText.600'>West Chd</Text>
             </VStack>
           </Row>
-          <VStack space={5}>
+          <VStack space={5} mt={items.items.length > 0 ? 5 : 0}>
             {items.items.map((item: any, key: number) => {
               total += item.cost * item.count;
               if (item.count != 0) {
@@ -213,9 +213,8 @@ export default function Cart() {
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   ₹20
                 </Button>
@@ -223,9 +222,8 @@ export default function Cart() {
                   <Button
                     variant='ghost'
                     borderWidth={1}
-                    borderColor='headingText.300'
+                    borderColor='gray.300'
                     fontWeight={500}
-                    shadow={1}
                   >
                     ₹30
                   </Button>
@@ -236,18 +234,16 @@ export default function Cart() {
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   ₹50
                 </Button>
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   Other
                 </Button>
