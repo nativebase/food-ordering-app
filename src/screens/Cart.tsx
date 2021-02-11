@@ -19,7 +19,6 @@ import {
 import { ItemsContext } from '../utils/ItemsContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Path } from 'react-native-svg';
-import window from '../utils/Layout';
 
 export default function Cart() {
   const items: any = React.useContext(ItemsContext);
@@ -29,7 +28,7 @@ export default function Cart() {
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
       <ScrollView>
-        <Box bg='white' px={4} py={6} width={window.width}>
+        <Box bg='white' px={4} py={6} width={'100%'}>
           <Row>
             <Image
               alt='image'
@@ -162,8 +161,9 @@ export default function Cart() {
           bg='white'
           px={4}
           py={6}
-          width={window.width}
+          width={'100%'}
           flexWrap={'wrap'}
+          alignItems={'center'}
         >
           <Box
             bg='orange.50'
@@ -172,19 +172,18 @@ export default function Cart() {
             borderWidth={1.5}
             borderColor='orange.300'
             flexDirection={'row'}
-            width={window.width - 30}
+            width={'98%'}
           >
-            <Box width={42}>
+            <Box>
               <Checkbox
                 colorScheme='orange'
                 borderColor='orange.700'
                 mr={3}
                 value={''}
-              >
-                {''}
-              </Checkbox>
+                accessibilityLabel={'checkbox'}
+              ></Checkbox>
             </Box>
-            <Box width={window.width - 120} color='orange.700'>
+            <Box width={'90%'} color='orange.700'>
               <Text fontSize={16} fontWeight='700'>
                 Opt in for No-Contact Delivery
               </Text>
