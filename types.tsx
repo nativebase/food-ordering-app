@@ -8,7 +8,7 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   SEARCH: undefined;
-  SWIGGY: undefined;
+  FOODIE: undefined;
   CART: undefined;
   ACCOUNT: undefined;
 };

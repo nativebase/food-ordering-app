@@ -1,130 +1,198 @@
-import * as React from "react";
-import { Box, Flex, Row, Text } from "native-base";
-import { ScrollView } from "react-native-gesture-handler";
-import ItemCard from "../components/ItemCard";
+import * as React from 'react';
+import { Box, Flex, Row } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
 
-export default function RestaurantMenu() {
-  let data = [
+import ItemCard from '../components/ItemCard';
+import window from '../utils/Layout';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Divider, HStack, Icon, IconButton, Text, VStack } from 'native-base';
+import { Path } from 'react-native-svg';
+
+interface DataProps {
+  name: string;
+  cost: number;
+  src: string;
+  count: number;
+}
+
+export default function RestaurantMenu({ navigation }: any) {
+  let data: DataProps[] = [
     {
-      name: "EVM McSpicy Paneer Double Patty Burger",
+      name: 'EVM McSpicy Paneer Double Patty Burger',
       cost: 169,
       src:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/mhwn6s85lashabiwfmyn",
+        'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/mhwn6s85lashabiwfmyn',
       count: 0,
     },
 
     {
-      name: "Shake Shake Fries [Piri Piri]",
+      name: 'Shake Shake Fries [Piri Piri]',
       cost: 110,
       src:
-        "https://www.sunstar.com.ph/uploads/imported_images/files/field/image/article/mcdonalds-shake-shake-fries_0.jpg",
+        'https://www.sunstar.com.ph/uploads/imported_images/files/field/image/article/mcdonalds-shake-shake-fries_0.jpg',
 
       count: 0,
     },
     {
       name:
-        "2 McVeggie Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke",
+        '2 McVeggie Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke',
       cost: 508,
       src:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/uvr4hb1vzwfiex3ktgyw",
+        'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/uvr4hb1vzwfiex3ktgyw',
 
       count: 0,
     },
     {
-      name: "EVM Schezwan Veg Double Patty Burger",
+      name: 'EVM Schezwan Veg Double Patty Burger',
       cost: 134,
       src:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/aimfe6vwuyntrmxibyjw",
+        'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/aimfe6vwuyntrmxibyjw',
       count: 0,
     },
     {
-      name: "McSpicy Paneer",
+      name: 'McSpicy Paneer',
       cost: 158,
       src:
-        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/uvr4hb1vzwfiex3ktgyw",
+        'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_312,h_196,c_fill/uvr4hb1vzwfiex3ktgyw',
       count: 0,
     },
     {
       name:
-        "2 McSpicy Paneer Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke",
+        '2 McSpicy Paneer Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke',
       cost: 766,
       src:
-        "https://b.zmtcdn.com/data/pictures/chains/9/120179/1b26ec6910fd2fa0817d3bf26953a19f.png?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
+        'https://b.zmtcdn.com/data/pictures/chains/9/120179/1b26ec6910fd2fa0817d3bf26953a19f.png?fit=around|771.75:416.25&crop=771.75:416.25;*,*',
       count: 0,
     },
     {
-      name: "Big Mac® Combo Meal",
+      name: 'Big Mac® Combo Meal',
       cost: 508,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/meal/desktop/h-mcdonalds-Big-Mac-Extra-Value-Meals.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/meal/desktop/h-mcdonalds-Big-Mac-Extra-Value-Meals.jpg?$Product_Desktop$',
       count: 0,
     },
     {
-      name: "Small Minute Maid® Fruit Punch Slushie",
+      name: 'Small Minute Maid® Fruit Punch Slushie',
       cost: 766,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-minute-maid-fruit-punch-slushie.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-minute-maid-fruit-punch-slushie.jpg?$Product_Desktop$',
 
       count: 0,
     },
     {
-      name: "Caramel Latte",
+      name: 'Caramel Latte',
       cost: 508,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-McCafe-Caramel-Latte-Medium.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-McCafe-Caramel-Latte-Medium.jpg?$Product_Desktop$',
       count: 0,
     },
     {
-      name: "Iced Mocha",
+      name: 'Iced Mocha',
       cost: 286,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-McCafe-Iced-Mocha-Medium.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-McCafe-Iced-Mocha-Medium.jpg?$Product_Desktop$',
       count: 0,
     },
     {
-      name: "Double Cheeseburger",
+      name: 'Double Cheeseburger',
       cost: 508,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Double-Cheeseburger.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Double-Cheeseburger.jpg?$Product_Desktop$',
       count: 0,
     },
     {
-      name: "Sausage Burrito",
+      name: 'Sausage Burrito',
       cost: 766,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Sausage-Burrito.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Sausage-Burrito.jpg?$Product_Desktop$',
       count: 0,
     },
     {
-      name: "Big Mac",
+      name: 'Big Mac',
       cost: 500,
       src:
-        "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Big-Mac.jpg?$Product_Desktop$",
+        'https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Big-Mac.jpg?$Product_Desktop$',
       count: 0,
     },
     {
       name:
-        " 2 Dosa Masala Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke",
+        ' 2 Dosa Masala Double Patty Burger + 2 Pizza McPuff + 1 Medium French Fries + 2 Medium Coke',
       cost: 467,
       src:
-        "https://b.zmtcdn.com/data/pictures/chains/1/171/5addf1f62ad51f18decd7516f563f30f.jpg",
+        'https://b.zmtcdn.com/data/pictures/chains/1/171/5addf1f62ad51f18decd7516f563f30f.jpg',
       count: 0,
     },
   ];
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box bg='white' py={3} px={4}>
+        <Row justifyContent='space-between' px={2}>
+          <Box>
+            <HStack space={4} alignItems={'center'}>
+              <IconButton
+                onPress={() => navigation.goBack()}
+                variant='ghost'
+                icon={<Icon name={'arrow-back'} size={7} />}
+              />
+              <VStack space={1} mt={-1}>
+                <Text fontWeight={700} fontSize={16} fontFamily='ProximaNova'>
+                  Foodie's
+                </Text>
+                <Text>34 mins</Text>
+              </VStack>
+            </HStack>
+          </Box>
+          <HStack space={3}>
+            <IconButton
+              onPress={() => navigation.goBack()}
+              px={0}
+              variant='ghost'
+              icon={
+                <Icon size={6} viewBox='0 -28 512.001 512' color='gray.700'>
+                  <Path d='m256 455.515625c-7.289062 0-14.316406-2.640625-19.792969-7.4375-20.683593-18.085937-40.625-35.082031-58.21875-50.074219l-.089843-.078125c-51.582032-43.957031-96.125-81.917969-127.117188-119.3125-34.644531-41.804687-50.78125-81.441406-50.78125-124.742187 0-42.070313 14.425781-80.882813 40.617188-109.292969 26.503906-28.746094 62.871093-44.578125 102.414062-44.578125 29.554688 0 56.621094 9.34375 80.445312 27.769531 12.023438 9.300781 22.921876 20.683594 32.523438 33.960938 9.605469-13.277344 20.5-24.660157 32.527344-33.960938 23.824218-18.425781 50.890625-27.769531 80.445312-27.769531 39.539063 0 75.910156 15.832031 102.414063 44.578125 26.191406 28.410156 40.613281 67.222656 40.613281 109.292969 0 43.300781-16.132812 82.9375-50.777344 124.738281-30.992187 37.398437-75.53125 75.355469-127.105468 119.308594-17.625 15.015625-37.597657 32.039062-58.328126 50.167969-5.472656 4.789062-12.503906 7.429687-19.789062 7.429687zm-112.96875-425.523437c-31.066406 0-59.605469 12.398437-80.367188 34.914062-21.070312 22.855469-32.675781 54.449219-32.675781 88.964844 0 36.417968 13.535157 68.988281 43.882813 105.605468 29.332031 35.394532 72.960937 72.574219 123.476562 115.625l.09375.078126c17.660156 15.050781 37.679688 32.113281 58.515625 50.332031 20.960938-18.253907 41.011719-35.34375 58.707031-50.417969 50.511719-43.050781 94.136719-80.222656 123.46875-115.617188 30.34375-36.617187 43.878907-69.1875 43.878907-105.605468 0-34.515625-11.605469-66.109375-32.675781-88.964844-20.757813-22.515625-49.300782-34.914062-80.363282-34.914062-22.757812 0-43.652344 7.234374-62.101562 21.5-16.441406 12.71875-27.894532 28.796874-34.609375 40.046874-3.453125 5.785157-9.53125 9.238282-16.261719 9.238282s-12.808594-3.453125-16.261719-9.238282c-6.710937-11.25-18.164062-27.328124-34.609375-40.046874-18.449218-14.265626-39.34375-21.5-62.097656-21.5zm0 0' />
+                </Icon>
+              }
+            />
+            <IconButton
+              onPress={() => navigation.goBack()}
+              px={0}
+              variant='ghost'
+              icon={
+                <Icon viewBox='0 0 20 20' color='gray.700' size={6}>
+                  <Path
+                    d='M19.129,18.164l-4.518-4.52c1.152-1.373,1.852-3.143,1.852-5.077c0-4.361-3.535-7.896-7.896-7.896
+                          c-4.361,0-7.896,3.535-7.896,7.896s3.535,7.896,7.896,7.896c1.934,0,3.705-0.698,5.078-1.853l4.52,4.519
+                          c0.266,0.268,0.699,0.268,0.965,0C19.396,18.863,19.396,18.431,19.129,18.164z M8.567,15.028c-3.568,0-6.461-2.893-6.461-6.461
+                          s2.893-6.461,6.461-6.461c3.568,0,6.46,2.893,6.46,6.461S12.135,15.028,8.567,15.028z'
+                  />
+                </Icon>
+              }
+            />
+          </HStack>
+        </Row>
+      </Box>
+      <Divider borderWidth={0.35} borderColor='gray.400' />
+      <Box w='100%' py={2} bg='white'>
+        <Row justifyContent='space-between' mx={5}>
+          <Text fontFamily='ProximaNova' fontWeight={400}>
+            {' '}
+            Recommended
+          </Text>
+        </Row>
+      </Box>
+      <Divider borderWidth={0.35} borderColor='gray.400' />
       <ScrollView>
-        <Flex bg="white">
+        <Flex bg='white'>
           {data.map((item, key) => {
             if (key % 2 == 0)
               return (
-                <Row mx={2}>
-                  <Box width="50%">
+                <Row key={key}>
+                  <Box width={window.width / 2} p={2}>
                     <ItemCard item={data[key]} />
                   </Box>
                   {data[key + 1] ? (
-                    <Box width="50%">
+                    <Box width={window.width / 2} p={2}>
                       <ItemCard item={data[key + 1]} />
                     </Box>
                   ) : (
@@ -135,6 +203,6 @@ export default function RestaurantMenu() {
           })}
         </Flex>
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 }

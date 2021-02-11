@@ -1,28 +1,14 @@
 import * as React from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import {
-  Box,
-  Button,
-  Column,
-  HStack,
-  Icon,
-  Image,
-  Path,
-  Row,
-  Text,
-  VStack,
-} from 'native-base';
-import { useNavigation } from '@react-navigation/native';
+import { Box, Button, HStack, Image, Row, Text, VStack } from 'native-base';
 import { ItemsContext } from '../utils/ItemsContext';
 
 export default function ItemCard(item: any) {
-  let navigation = useNavigation();
   const [count, setCount] = React.useState(item?.item?.count);
   const context: any = React.useContext(ItemsContext);
   return (
     <>
-      <Button my={3} variant='ghost' alignItems='center' px={1}>
-        <VStack space={2} px={1}>
+      <Button my={1} variant='ghost' alignItems='center' px={1}>
+        <VStack space={2} px={1} width={'100%'}>
           <Row bg='red.100'>
             <Image
               alt='image'
@@ -36,7 +22,7 @@ export default function ItemCard(item: any) {
           <Text fontSize={10} color='gray.600' fontWeight={300}>
             EXTRA VALUE MEAL - MEDIUM
           </Text>
-          <Row width='95%'>
+          <Box width='100%' alignItems={'center'} flexDirection={'row'}>
             <Image
               alt='image'
               size='13px'
@@ -45,18 +31,17 @@ export default function ItemCard(item: any) {
                   'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/1200px-Indian-vegetarian-mark.svg.png',
               }}
             />
-            <Box mt={-1}>
-              <Text
-                noOfLines={2}
-                px={2}
-                fontWeight={400}
-                fontSize={15}
-                fontFamily='ProximaNova'
-              >
-                {item?.item?.name}
-              </Text>
-            </Box>
-          </Row>
+            <Text
+              noOfLines={2}
+              px={2}
+              fontWeight={400}
+              fontSize={15}
+              fontFamily='ProximaNova'
+              isTruncated={true}
+            >
+              {item?.item?.name}
+            </Text>
+          </Box>
           <Row pt={5} justifyContent='space-between'>
             <Text color='gray.700' fontWeight={300}>
               ₹{item?.item?.cost}
