@@ -157,7 +157,14 @@ export default function Cart() {
             </Text>
           </Row>
         </Box>
-        <Box mt={5} bg='white' px={4} py={6} width={'100%'} flexWrap={'wrap'}>
+        <Box
+          mt={5}
+          bg='white'
+          px={4}
+          py={6}
+          width={window.width}
+          flexWrap={'wrap'}
+        >
           <Box
             bg='orange.50'
             p={4}
@@ -165,16 +172,19 @@ export default function Cart() {
             borderWidth={1.5}
             borderColor='orange.300'
             flexDirection={'row'}
+            width={window.width - 30}
           >
-            <Checkbox
-              colorScheme='orange'
-              borderColor='orange.700'
-              mr={3}
-              value={''}
-            >
-              {''}
-            </Checkbox>
-            <Box width='90%' color='orange.700'>
+            <Box width={42}>
+              <Checkbox
+                colorScheme='orange'
+                borderColor='orange.700'
+                mr={3}
+                value={''}
+              >
+                {''}
+              </Checkbox>
+            </Box>
+            <Box width={window.width - 120} color='orange.700'>
               <Text fontSize={16} fontWeight='700'>
                 Opt in for No-Contact Delivery
               </Text>
