@@ -23,11 +23,11 @@ export default function BottomTabNavigator() {
   });
   return (
     <BottomTab.Navigator
-      initialRouteName='SWIGGY'
+      initialRouteName='FOODIE'
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
     >
       <BottomTab.Screen
-        name='SWIGGY'
+        name='FOODIE'
         component={AppNavigator}
         options={{
           tabBarIcon: ({ color }) => (
