@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Button, Divider, HStack, Image, Row, Text, VStack } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-import window from '../utils/Layout';
+
 export default function RestaurantCard() {
   let navigation = useNavigation();
   return (
     <>
       <Button
-        variant='ghost'
+        variant='unstyled'
         py={6}
         bg='white'
         onPress={() => navigation.navigate('RestaurantMenu')}
       >
-        <Row width={window.width}>
+        <Row>
           <Image
             alt='image'
             size={110}
