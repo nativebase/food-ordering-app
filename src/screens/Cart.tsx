@@ -19,7 +19,6 @@ import {
 import { ItemsContext } from '../utils/ItemsContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Path } from 'react-native-svg';
-import window from '../utils/Layout';
 
 export default function Cart() {
   const items: any = React.useContext(ItemsContext);
@@ -29,8 +28,8 @@ export default function Cart() {
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
       <ScrollView>
-        <Box bg='white' px={4} py={6} width={window.width}>
-          <Row mb={5}>
+        <Box bg='white' px={4} py={6} width={'100%'}>
+          <Row>
             <Image
               alt='image'
               size={70}
@@ -41,12 +40,12 @@ export default function Cart() {
             />
             <VStack pl={5} space={1} justifyContent='center'>
               <Text fontWeight={600} fontSize={18}>
-                McDonald's
+                Foodie's
               </Text>
               <Text color='headingText.600'>West Chd</Text>
             </VStack>
           </Row>
-          <VStack space={5}>
+          <VStack space={5} mt={items.items.length > 0 ? 5 : 0}>
             {items.items.map((item: any, key: number) => {
               total += item.cost * item.count;
               if (item.count != 0) {
@@ -157,7 +156,15 @@ export default function Cart() {
             </Text>
           </Row>
         </Box>
-        <Box mt={5} bg='white' px={4} py={6} width={'100%'} flexWrap={'wrap'}>
+        <Box
+          mt={5}
+          bg='white'
+          px={4}
+          py={6}
+          width={'100%'}
+          flexWrap={'wrap'}
+          alignItems={'center'}
+        >
           <Box
             bg='orange.50'
             p={4}
@@ -165,16 +172,18 @@ export default function Cart() {
             borderWidth={1.5}
             borderColor='orange.300'
             flexDirection={'row'}
+            width={'98%'}
           >
-            <Checkbox
-              colorScheme='orange'
-              borderColor='orange.700'
-              mr={3}
-              value={''}
-            >
-              {''}
-            </Checkbox>
-            <Box width='90%' color='orange.700'>
+            <Box>
+              <Checkbox
+                colorScheme='orange'
+                borderColor='orange.700'
+                mr={3}
+                value={''}
+                accessibilityLabel={'checkbox'}
+              ></Checkbox>
+            </Box>
+            <Box width={'90%'} color='orange.700'>
               <Text fontSize={16} fontWeight='700'>
                 Opt in for No-Contact Delivery
               </Text>
@@ -213,9 +222,8 @@ export default function Cart() {
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   ₹20
                 </Button>
@@ -223,9 +231,8 @@ export default function Cart() {
                   <Button
                     variant='ghost'
                     borderWidth={1}
-                    borderColor='headingText.300'
+                    borderColor='gray.300'
                     fontWeight={500}
-                    shadow={1}
                   >
                     ₹30
                   </Button>
@@ -236,18 +243,16 @@ export default function Cart() {
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   ₹50
                 </Button>
                 <Button
                   variant='ghost'
                   borderWidth={1}
-                  borderColor='headingText.300'
+                  borderColor='gray.300'
                   fontWeight={500}
-                  shadow={1}
                 >
                   Other
                 </Button>

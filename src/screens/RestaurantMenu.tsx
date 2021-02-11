@@ -125,7 +125,7 @@ export default function RestaurantMenu({ navigation }: any) {
   ];
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <Box bg='white' py={3} px={4}>
         <Row justifyContent='space-between' px={2}>
           <Box>
@@ -137,7 +137,7 @@ export default function RestaurantMenu({ navigation }: any) {
               />
               <VStack space={1} mt={-1}>
                 <Text fontWeight={700} fontSize={16} fontFamily='ProximaNova'>
-                  MacDonald's
+                  Foodie's
                 </Text>
                 <Text>34 mins</Text>
               </VStack>
