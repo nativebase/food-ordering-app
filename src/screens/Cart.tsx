@@ -10,7 +10,6 @@ import {
   HStack,
   Icon,
   Image,
-  Link,
   Row,
   Text,
   View,

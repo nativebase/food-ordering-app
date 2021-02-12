@@ -10,21 +10,22 @@ import {
   Text,
   VStack,
 } from 'native-base';
-import window from '../../utils/Layout';
 import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Account() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Box bg='white' height={window.height}>
+      <Box bg='white' flex={1}>
         <Box flex={1.1}>
           <Image
             alt={'img'}
-            height={'100%'}
+            height={undefined}
+            width={undefined}
+            resizeMode={'stretch'}
             source={require('../../../assets/images/Account.png')}
           />
         </Box>
         <Box px={4} pt={5} flex={1}>
-          <VStack space={6}>
+          <VStack space={5}>
             <Box>
               <Text fontWeight={700} fontSize={20}>
                 ACCOUNT
