@@ -172,8 +172,8 @@ export default function RestaurantMenu({ navigation }: any) {
           </HStack>
         </Row>
       </Box>
-      <Divider borderWidth={0.35} borderColor='gray.400' />
-      <Box w='100%' py={2} bg='white'>
+      <Divider borderWidth={0.2} borderColor='gray.400' />
+      <Box w='100%' py={2} bg='white' shadow={2}>
         <Row justifyContent='space-between' mx={5}>
           <Text fontFamily='ProximaNova' fontWeight={400}>
             {' '}

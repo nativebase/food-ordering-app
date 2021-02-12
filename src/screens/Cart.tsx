@@ -10,7 +10,6 @@ import {
   HStack,
   Icon,
   Image,
-  Link,
   Row,
   Text,
   View,
@@ -25,14 +24,18 @@ export default function Cart() {
   let total = 0;
   return (
     <SafeAreaView
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
       <ScrollView>
         <Box bg='white' px={4} py={6} width={'100%'}>
-          <Row>
+          <Row alignItems={'center'}>
             <Image
               alt='image'
-              size={70}
+              size={60}
               source={{
                 uri:
                   'https://www.foodbusinessnews.net/ext/resources/2019/10/McDonaldsPLTMeal_Lead.jpg?1571842463',
@@ -51,28 +54,29 @@ export default function Cart() {
               if (item.count != 0) {
                 return (
                   <Box
-                    alignItems={'center'}
+                    justifyContent={'space-between'}
                     key={key}
                     flexDirection={'row'}
-                    width={'auto'}
                   >
-                    <Image
-                      mr={2}
-                      alt='image'
-                      size='4'
-                      source={{
-                        uri:
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/1200px-Indian-vegetarian-mark.svg.png',
-                      }}
-                    />
-                    <Box width='55%'>
-                      <Text fontWeight={400} fontSize={16} isTruncated={true}>
-                        {item.name}
-                      </Text>
-                    </Box>
+                    <Row>
+                      <Image
+                        mr={2}
+                        alt='image'
+                        size='4'
+                        source={{
+                          uri:
+                            'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/1200px-Indian-vegetarian-mark.svg.png',
+                        }}
+                      />
+                      <Box width={180}>
+                        <Text fontWeight={400} fontSize={16}>
+                          {item.name}
+                        </Text>
+                      </Box>
+                    </Row>
                     <Box>
                       <HStack
-                        borderWidth={2}
+                        borderWidth={1}
                         borderColor='gray.300'
                         alignItems='center'
                         mx={1}
@@ -145,7 +149,7 @@ export default function Cart() {
             borderColor='headingText.300'
             borderWidth={0.5}
           />
-          <Row alignItems='center'>
+          <Row alignItems='center' justifyContent={'space-between'}>
             <Icon viewBox='0 0 16 16' color='headingText.500' size={5}>
               <Path d='M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z' />
               <Path d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z' />
@@ -156,15 +160,7 @@ export default function Cart() {
             </Text>
           </Row>
         </Box>
-        <Box
-          mt={5}
-          bg='white'
-          px={4}
-          py={6}
-          width={'100%'}
-          flexWrap={'wrap'}
-          alignItems={'center'}
-        >
+        <Box mt={5} bg='white' px={4} py={6} width={'100%'}>
           <Box
             bg='orange.50'
             p={4}
@@ -194,31 +190,34 @@ export default function Cart() {
               </Text>
             </Box>
           </Box>
-          <Box mt={5}>
+          <Box mt={5} width={'100%'} flexDirection={'row'}>
             <Image
               alt='delivery'
               size='38px'
               source={require('../../assets/images/delivery.png')}
             ></Image>
-            <Box pl={3}>
-              <Row>
-                <Text letterSpacing={1} fontWeight='600' fontSize={14}>
-                  Play Santa. Tip the partner!
+
+            <Box width={'90%'} pl={4} pt={2}>
+              <Box flexDirection={'row'} alignItems={'center'}>
+                <Text letterSpacing={1} fontWeight='600' fontSize={14} pr={2}>
+                  Tip your hunger saviour!
                 </Text>
-                <Link
-                  isUnderlined={false}
-                  color='blue.500'
-                  fontWeight='500'
-                  pl={2}
-                >
-                  How it works
-                </Link>
-              </Row>
+                <Icon
+                  type={'Feather'}
+                  name={'info'}
+                  size={3}
+                  color={'headingText.600'}
+                />
+              </Box>
               <Text color='headingText.600' mt={2} fontSize={13}>
-                Christmas comes once a year. Tips needn't. Ring in the holiday
-                spirit by playing Secret Santa to your delivery partner.
+                Thank your delivery partner for helping you stay safe indoors.
+                Support them through these tough times with a tip.
               </Text>
-              <HStack space={4} mt={6}>
+              <Box
+                mt={6}
+                justifyContent={'space-between'}
+                flexDirection={'row'}
+              >
                 <Button
                   variant='ghost'
                   borderWidth={1}
@@ -256,7 +255,7 @@ export default function Cart() {
                 >
                   Other
                 </Button>
-              </HStack>
+              </Box>
             </Box>
           </Box>
         </Box>
