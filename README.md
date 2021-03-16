@@ -1,6 +1,6 @@
 # Food Ordering App
 
-A sample app made using NativeBase 3.0. It displays how you can build beautiful apps using NativeBase's components.
+A sample app made using [NativeBase 3.0](https://alpha.nativebase.io/). It displays how you can build beautiful apps using NativeBase's components.
 
 ## Getting Started
 
